@@ -60,7 +60,7 @@ public class ScanFragmentManager {
                 .commit();
         mFragmentCount++;
 
-        scheduleHideAll();
+        //scheduleHideAll();
     }
 
     public void popSideFragment() {

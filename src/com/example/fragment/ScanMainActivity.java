@@ -23,6 +23,7 @@ public class ScanMainActivity extends Activity {
 	private Button mScanChannel = null;
 	private int mCurrentFragment = 0;
     private ScanFragmentManager mScanFragmentManager = null;
+    private ParameterMananer mParameterMananer = null;
 	
 	private static final int INIT_FRAGMENT = 0;
 	private static final int SCAN_FRAGMENT = 1;
@@ -35,6 +36,7 @@ public class ScanMainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		mScanFragmentManager = new ScanFragmentManager(this);
 		mScanFragmentManager.show(new PlaceholderFragment());
+		mParameterMananer = new ParameterMananer(this);
 	}
 
 	
@@ -85,5 +87,9 @@ public class ScanMainActivity extends Activity {
 				}
 			});
 		}
+	}
+	
+	public ParameterMananer getParameterMananer() {
+		return mParameterMananer;
 	}
 }

@@ -53,7 +53,7 @@
                 android:textColor="@color/common_text_color"
                 android:textSize="14sp" />
 
-            <ListView
+            <com.example.fragment.ItemListView
                 android:id="@+id/listview_item"
                 android:layout_width="350dp"
                 android:layout_height="300dp"
@@ -63,9 +63,7 @@
                 android:divider="?android:attr/listDividerAlertDialog"
                 android:focusable="true"
                 android:footerDividersEnabled="false"
-                android:headerDividersEnabled="false" >
-
-            </ListView>
+                android:headerDividersEnabled="false" />
 
         </LinearLayout>
 
@@ -86,7 +84,7 @@
                 android:textColor="@color/common_text_color"
                 android:textSize="14sp" />
 
-            <ListView
+            <com.example.fragment.ItemListView
                 android:id="@+id/listview_option"
                 android:layout_width="400dp"
                 android:layout_height="300dp"
@@ -96,9 +94,7 @@
                 android:divider="?android:attr/listDividerAlertDialog"
                 android:focusable="true"
                 android:footerDividersEnabled="false"
-                android:headerDividersEnabled="false" >
-
-            </ListView>
+                android:headerDividersEnabled="false" />
 
         </LinearLayout>
 
