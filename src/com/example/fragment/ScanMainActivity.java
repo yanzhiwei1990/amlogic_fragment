@@ -43,7 +43,7 @@ public class ScanMainActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mScanFragmentManager.hideAll();
+		mScanFragmentManager.removeRunnable();
 	}
 	/**
 	 * A placeholder fragment containing a simple view.
@@ -91,5 +91,16 @@ public class ScanMainActivity extends Activity {
 	
 	public ParameterMananer getParameterMananer() {
 		return mParameterMananer;
+	}
+
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (mScanFragmentManager.isActive()) {
+				mScanFragmentManager.popSideFragment();
+				Log.d(TAG, "onKeyUp");
+				return true;
+			}
+		}
+		return super.onKeyUp(keyCode, event);
 	}
 }

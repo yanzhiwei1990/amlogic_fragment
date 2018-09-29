@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Handler;
+import android.util.Log;
 
 public class ScanFragmentManager {
     private static final String TAG = "ScanFragmentManager";
@@ -46,9 +47,6 @@ public class ScanFragmentManager {
         		FIRST_BACKSTACK_RECORD_NAME, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         mFragmentCount = 0;
 
-        if (mHideAllRunnable != null) {
-        	mHideAllRunnable.run();
-        }
     }
     
     public void show(Fragment sideFragment) {
@@ -68,7 +66,9 @@ public class ScanFragmentManager {
             return;
         } else if (mFragmentCount == 1) {
             // Show closing animation with the last fragment.
-        	hideAll();
+            Log.d(TAG, "popSideFragment finish");
+            mHandler.removeCallbacks(mHideAllRunnable);
+            mActivity.finish();
             return;
         }
         mFragmentManager.popBackStack();
@@ -77,5 +77,9 @@ public class ScanFragmentManager {
 
     public boolean isActive() {
         return mFragmentCount != 0;
+    }
+
+    public void removeRunnable() {
+        mHandler.removeCallbacks(mHideAllRunnable);
     }
 }

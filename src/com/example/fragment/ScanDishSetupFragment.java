@@ -49,7 +49,9 @@ public class ScanDishSetupFragment extends Fragment {
 		mItemDetailItem.addAll(mParameterMananer.getItemList(mParameterMananer.getCurrentListType()));
 		mItemAdapterItem = new ItemAdapter(mItemDetailItem, getActivity());
 		mListViewItem.setAdapter(mItemAdapterItem);
-		mListViewItem.setLabelFor(123);
+		//mListViewItem.setLabelFor(123);
+		mListViewItem.setTag(ParameterMananer.ITEM_SATALLITE);
+
 		//mListViewItem.setOnItemClickListener(mOnItemClickListener);
 		TextView textView1 = (TextView) rootView.findViewById(R.id.listview_item_title);
 		textView1.setText("Satellite");
@@ -63,13 +65,11 @@ public class ScanDishSetupFragment extends Fragment {
 		mListViewItem.setListSwitchedListener(mListSwitchedListener);
 		mListViewItem.setListType(ItemListView.ITEM_SATALLITE);
 		
-		mItemDetailOption.add(new ItemDetail(0, "test3", "test33"));
-		mItemDetailOption.add(new ItemDetail(0, "test4", "test44"));
-		mItemDetailOption.add(new ItemDetail(0, "test5", "test55"));
 		mItemDetailOption.addAll(mParameterMananer.getCompleteParameterList(mParameterMananer.getCurrentListType(), mParameterMananer.getCurrentSatellite()));
 		mItemAdapterOption = new ItemAdapter(mItemDetailOption, getActivity());
 		mListViewOption.setAdapter(mItemAdapterOption);
-		mListViewOption.setLabelFor(456);
+		//mListViewOption.setLabelFor(456);
+		mListViewItem.setTag(ParameterMananer.ITEM_SATALLITE_OPTION);
 		//mListViewOption.setOnItemClickListener(mOnItemClickListener);
 		TextView textView2 = (TextView) rootView.findViewById(R.id.listview_option_title);
 		textView2.setText("Ku_NewSat2");
