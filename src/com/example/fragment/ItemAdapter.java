@@ -49,7 +49,7 @@ public class ItemAdapter extends BaseAdapter {
     	if (convertView == null) {
     		convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
     		holder = new ViewHolder();
-    		holder.checkbox1 = (CheckBox) convertView.findViewById(R.id.checkbox_first);
+    		holder.select = (TextView) convertView.findViewById(R.id.item_select);
     		holder.textview2 = (TextView) convertView.findViewById(R.id.textview_second);
     		holder.textview3 = (TextView) convertView.findViewById(R.id.textview_third);
     		convertView.setTag(holder);
@@ -59,17 +59,23 @@ public class ItemAdapter extends BaseAdapter {
 
         int editstatus = mData.get(position).getEditStatus();
         if (editstatus == ItemDetail.NONE_EDIT) {
-        	holder.checkbox1.setVisibility(View.INVISIBLE);
+        	holder.select.setVisibility(View.INVISIBLE);
         } else {
-        	holder.checkbox1.setVisibility(View.VISIBLE);
+        	holder.select.setVisibility(View.VISIBLE);
         	if (editstatus == ItemDetail.SELECT_EDIT) {
-        		holder.checkbox1.setSelected(true);
+        		holder.select.setBackgroundResource(R.drawable.ic_check_white_24dp);
         	} else {
-        		holder.checkbox1.setSelected(false);
+        		holder.select.setVisibility(View.INVISIBLE);
         	}
         }
         holder.textview2.setText(mData.get(position).getFirstText());
-        holder.textview3.setText(mData.get(position).getSecondText());
+        if (mData.get(position).getSecondText() == null) {
+        	holder.textview3.setVisibility(View.GONE);
+        } else {
+        	holder.textview3.setVisibility(View.VISIBLE);
+        	holder.textview3.setText(mData.get(position).getSecondText());
+        }
+        
         return convertView;
     }
     
@@ -117,7 +123,7 @@ public class ItemAdapter extends BaseAdapter {
     }
     
     public class ViewHolder{
-    	CheckBox checkbox1;
+    	TextView select;
         TextView textview2;
         TextView textview3;
     }
